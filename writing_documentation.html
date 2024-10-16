@@ -55,7 +55,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#building-the-docs">Building the docs</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#tutorial-driven-development">Tutorial Driven Development</a></li>
 </ul>
 </li>
 </ul>
@@ -127,7 +126,7 @@
 pip<span class="w"> </span>install<span class="w"> </span>sphinx,<span class="w"> </span>myst-nb,<span class="w"> </span>sphinx_rtd_theme
 
 <span class="c1"># navigate into the repository</span>
-<span class="nb">cd</span><span class="w"> </span>DISCnet_workshop
+<span class="nb">cd</span><span class="w"> </span>Advanced_Git_demo
 <span class="c1"># make a new folder to hold the documentation</span>
 mkdir<span class="w"> </span>docs
 <span class="nb">cd</span><span class="w"> </span>docs
@@ -186,7 +185,7 @@ sphinx-quickstart
 </section>
 <section id="api-documentation-with-apidoc">
 <h3>API documentation with <code class="docutils literal notranslate"><span class="pre">apidoc</span></code><a class="headerlink" href="#api-documentation-with-apidoc" title="Permalink to this heading"></a></h3>
-<p>For Sphinx to be able to read the docstrings from your source code it first needs be told what source files to look in.  This can either be done by adding your source folders by hand to <code class="docutils literal notranslate"><span class="pre">docs/soruce/index.rst</span></code> or by using the <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span></code> command to build these <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files for you.  We will be using this automated approach for this workshop:</p>
+<p>For Sphinx to be able to read the docstrings from your source code it first needs be told what source files to look in.  This can either be done by adding your source folders by hand to <code class="docutils literal notranslate"><span class="pre">docs/soruce/index.rst</span></code> or by using the <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span></code> command to build these <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files for you.  We will be using this automated approach for this lecture:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc<span class="w"> </span>-MEf<span class="w"> </span>-o<span class="w"> </span>./docs/source<span class="w"> </span>./data_transforms<span class="w"> </span>./data_transforms/tests
 </pre></div>
 </div>
@@ -202,7 +201,7 @@ sphinx-quickstart
 <p>This command will create two files: <code class="docutils literal notranslate"><span class="pre">data_transforms.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code>. While I think the templates used for these files are not the best in the world, they can provide a good starting place for learning what these files should look like.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There are also options for customizing these templates, but that is outside the scope of this workshop.</p>
+<p>There are also options for customizing these templates, but that is outside the scope of this lecture.</p>
 </div>
 <p>As we will be running this command every time the docs are built (to check for new code files) the resulting <code class="docutils literal notranslate"><span class="pre">rst</span></code> files have been added to the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file.</p>
 <p>Lastly we need to update the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file to include the files create with this command (and these class notes while we are at it):</p>
@@ -265,11 +264,6 @@ make<span class="w"> </span>html
 </pre></div>
 </div>
 </section>
-</section>
-<section id="tutorial-driven-development">
-<h2>Tutorial Driven Development<a class="headerlink" href="#tutorial-driven-development" title="Permalink to this heading"></a></h2>
-<p>It is quite common in fast moving projects for the documentation and tutorials to become out of date with the code.  To try and combat this it can be helpful to adapt to a tutorial driven workflow.  In this kind of workflow you sit down and write the full tutorial <strong>first</strong> and only once it is finished do you updated the code to match the new tutorial.  This ensure that the tutorial always matches the current code and helps you keep in mind how the code is intended to be used.</p>
-<p>This method works best when you can involve some of the people who will be using your code in the process of making the tutorials.  You can get rapid feedback about the user experience and use that to better inform you about the best way to structure the code.  These tutorials can also inform you of various test cases you can create for your code and works well with test driven development as well (more on this in the next section).</p>
 </section>
 </section>
 

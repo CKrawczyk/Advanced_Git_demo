@@ -1,22 +1,22 @@
 # Good coding practices
-Whether you are working alone or working in a team, one of the most valuable things you should keep in mind is **context transfer**.  It is not enough to just track the changes made to code, but to also track **why** those changes were made.  Many of the best practices covered within this workshop will be various flavors of recoding this kind of context in a way that is clear to other developers, or even to yourself when you look back at old code.
+Whether you are working alone or working in a team, one of the most valuable things you should keep in mind is **context transfer**.  It is not enough to just track the changes made to the code, but to also track **why** those changes were made.  Many of the best practices covered within this lecture will be various flavors of recoding this kind of context in a way that is clear to other developers, or even to yourself when you look back at old code.
 
-When context is well recorded it becomes easier for other develops to be on-boarded into your codebase, structural changes to the code become easier to manage, and leads to code that is easier to maintain in the long run.
+When context is well recorded it becomes easier for other develops to be on-boarded into your codebase, structural changes to the code become easier to manage, and overall it leads to code that is easier to maintain in the long run.
 
 ## Context transfer
 
 Ways to boost context transfer:
 
-- Pair programming: Work with another developer in real time when writing your code.  Typically you have one person drive the keyboard focusing on code syntax and code legibility while the other drives the code structure focusing on how the code should be structured and the algorithms being used.  Every so often these roles should switch.
+- Pair programming: Work with another developer in real time when writing your code.  Typically you have one person drive the keyboard focusing on code syntax and code legibility while the other drives the code structure focusing on how the code should be organized and the algorithms being used.  It is typically useful to switch these roles every so often.
 - Git commit messages: Include the **why** for every change directly in the commit message
 - GitHub Pull Requests: Use this space for the larger reason behind any changes and/or features
 - [Architecture Decision Record](https://github.com/joelparkerhenderson/architecture-decision-record) (ADR): For larger code bases ADRs can be used to track changes to a code's architecture over time.  These records are kept in the repository next to the code and can be refereed to by any developer who wants to know why the code is structured the way it is. 
 
 ## Text editors
 
-Although there are numerous IDEs (e.g. IDLE, Spyder) for python, for most everyday use you will likely be writing python code in a text editor and running your programs via the command line.  In this case it is important to have a good text editor that supports syntax highlighting, live linting (syntax and style checking), and is easy to configure the way you want.  I can highly recommend [VScode](https://code.visualstudio.com/) as a free text editor with all the features above.
+For most everyday use you will likely be writing code in a text editor and running your programs via the command line.  It can be useful to have a good text editor that supports syntax highlighting, live linting (syntax and style checking), and is easy to configure the way you want.  I can highly recommend [VScode](https://code.visualstudio.com/) as a free text editor with all the features above.
 
-For python coding in VScode you will want to install the `Python` extension by Microsoft (you will be prompted to install it when you first open a `.py` file) and the `Jupyter` extension by Microsoft.  Other useful extensions are the `Excel Viewer` extension for easier viewing of CSV files, `open in browser` for and option to open HTML files in your browser, `MyST-Markdown` for rendering markdown files, and `Code Spell Checker` for basic spell checking.
+For python coding in VScode you will want to install the `Python` extension by Microsoft (you will be prompted to install it when you first open a `.py` file) and the `Jupyter` extension by Microsoft (other extensions are available if you are coding in another language).  Other useful extensions are the `Excel Viewer` extension for easier viewing of CSV files, `open in browser` for and option to open HTML files in your browser, `MyST-Markdown` for rendering markdown files, and `Code Spell Checker` for basic spell checking.
 
 ```{note}
 The most important part for a text editor is that you are comfortable using it.  Feel free to try out different ones to find what works best for you.
@@ -59,7 +59,7 @@ Here are some examples of PEP 8 conventions:
 
 While you could read over PEP 8 and try to memorize it, the most effective way to lean (and stick to) PEP 8 standards is to use a linter for you code.  A linter is a package that will automatically check your code style through a command line function.  Some text editors support live linting to check your code style as you type your code (similar to a spell checker).
 
-The two most common linters used for python are [pylint](https://pylint.pycqa.org/en/latest/) and [flake8](https://flake8.pycqa.org/en/latest/).  While both cover the standard PEP 8 rules, they each have a different set of additional style rules that are checked (i.e. checking for things like unused `import`s).  Of the two `flake8` is a less opinionated making it a bit easier to get on with when first learning to stick to a style, because of this we will be using it for the workshop. Once `flake8` is install you can run it on the command line with:
+The two most common linters used for python are [pylint](https://pylint.pycqa.org/en/latest/) and [flake8](https://flake8.pycqa.org/en/latest/).  While both cover the standard PEP 8 rules, they each have a different set of additional style rules that are checked (i.e. checking for things like unused `import`s).  Of the two `flake8` is less opinionated making it a bit easier to get on with when first learning to stick to a style, because of this we will be using it for this lecture. Once `flake8` is install you can run it on the command line with:
 
 ```bash
 flake8
@@ -79,7 +79,3 @@ In particular, the `flake8` rules [W503](https://www.flake8rules.com/rules/W503.
 - Set the max line length to 120
 - Turn off rule `W503`
 - Turn off `BLK100` (flake-black is an optional set of rules we are not going to be using)
-
-```{note}
-[Black](https://black.readthedocs.io/en/stable/) is a code auto-formatter.  It will take the code you have written, and where possible, make it follow a consistent style.  By construction it **is not** configurable and **is** very opinionated.  If you like the [style it produces](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html) feel free to use it.
-```

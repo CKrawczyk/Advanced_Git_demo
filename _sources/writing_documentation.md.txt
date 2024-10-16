@@ -43,7 +43,7 @@ Sphinx has already been set up on this project, but while I was doing it I took 
 pip install sphinx, myst-nb, sphinx_rtd_theme
 
 # navigate into the repository
-cd DISCnet_workshop
+cd Advanced_Git_demo
 # make a new folder to hold the documentation
 mkdir docs
 cd docs
@@ -96,7 +96,7 @@ html_theme = 'sphinx_rtd_theme'
 ```
 
 ### API documentation with `apidoc`
-For Sphinx to be able to read the docstrings from your source code it first needs be told what source files to look in.  This can either be done by adding your source folders by hand to `docs/soruce/index.rst` or by using the `sphinx-apidoc` command to build these `.rst` files for you.  We will be using this automated approach for this workshop:
+For Sphinx to be able to read the docstrings from your source code it first needs be told what source files to look in.  This can either be done by adding your source folders by hand to `docs/soruce/index.rst` or by using the `sphinx-apidoc` command to build these `.rst` files for you.  We will be using this automated approach for this lecture:
 
 ```bash
 sphinx-apidoc -MEf -o ./docs/source ./data_transforms ./data_transforms/tests
@@ -113,7 +113,7 @@ What is this command doing:
 This command will create two files: `data_transforms.rst` and `modules.rst`. While I think the templates used for these files are not the best in the world, they can provide a good starting place for learning what these files should look like.  
 
 ```{note}
-There are also options for customizing these templates, but that is outside the scope of this workshop.
+There are also options for customizing these templates, but that is outside the scope of this lecture.
 ```
 
 As we will be running this command every time the docs are built (to check for new code files) the resulting `rst` files have been added to the `.gitignore` file.
@@ -181,8 +181,3 @@ make clean
 make html
 cd ..
 ```
-
-## Tutorial Driven Development
-It is quite common in fast moving projects for the documentation and tutorials to become out of date with the code.  To try and combat this it can be helpful to adapt to a tutorial driven workflow.  In this kind of workflow you sit down and write the full tutorial **first** and only once it is finished do you updated the code to match the new tutorial.  This ensure that the tutorial always matches the current code and helps you keep in mind how the code is intended to be used.
-
-This method works best when you can involve some of the people who will be using your code in the process of making the tutorials.  You can get rapid feedback about the user experience and use that to better inform you about the best way to structure the code.  These tutorials can also inform you of various test cases you can create for your code and works well with test driven development as well (more on this in the next section).

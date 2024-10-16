@@ -1,7 +1,7 @@
 # Using GitHub with collaborators 
 At some point in you will likely have a massive hard drive crash, or realize you introduced a bug in your code and want to revert it back to its working state (perhaps from several weeks before). Or you may end up working on a bit of code with other people. In any of these cases version control saves the day.
 
-In this workshop we will be using Git as our version control software, and GitHub as our remote repository service for working with collaborators.
+In this lecture we will be using Git as our version control software, and GitHub as our remote repository service for working with collaborators.
 
 ## Basic concepts
 
@@ -87,7 +87,7 @@ Full Git documentation can be found in [The Git Book](https://git-scm.com/book/e
 
 ### GitHub vs GitLab vs Bitbucket
 
-While we are using GitHub for this workshop, it is not the only option for hosting remote git repositories.  The other major options are [GitLab](https://about.gitlab.com/) and [Bitbucket](https://bitbucket.org/product/).  For the most part all there platforms offer the same services but they sometimes use different terms.  Below is a table for converting between the terms used by each platform:
+While we are using GitHub for this lecture, it is not the only option for hosting remote git repositories.  The other major options are [GitLab](https://about.gitlab.com/) and [Bitbucket](https://bitbucket.org/product/).  For the most part all there platforms offer the same services but they sometimes use different terms.  Below is a table for converting between the terms used by each platform:
 
 | GitHub         | GitLab        | Bitbucket           |
 | :------------- | :------------ | :------------------ |
@@ -99,9 +99,9 @@ While we are using GitHub for this workshop, it is not the only option for hosti
 
 ## Git workflow
 
-There are many different ways to effectively use git within a collaboration, and many more ways to have it be a nightmare.  For this workshop we will be using the workflow I use when working with the Zooniverse.  The workflow is as follows:
+There are many different ways to effectively use git within a collaboration, and many more ways to have it be a nightmare.  For this lecture we will be using the workflow I use when working with the Zooniverse.  The workflow is as follows:
 
-1. checkout the latest `main` branch and pull down the latest changes
+1. checkout the `main` branch and pull down the latest changes
 2. make a new branch with a descriptive name
     - for better organization of branch names you can prepend branch names with `feature/`, `bug/`, `hotfix/`
 3. write your code grouping logical units of changes into individual commits
@@ -112,12 +112,12 @@ There are many different ways to effectively use git within a collaboration, and
 or if you want to clean up your git history rebase in interactive mode (`git rebase -i main`)
 8. push the rebased code back to the remote
 9. merge to the `main` branch using the big green button
-10. delete the brach on the remote once the merge is finish
+10. delete the branch on the remote once the merge is finish
 11. pull the latest `main` (with your PR merged) locally
 12. (optional) delete your local copy of the merged branch
 
 ```{note}
-After the rebase when you go to push to the back to the remote (step 8) you will need to use `--force-with-lease` switch.  This is needed if any of the git history is re-written during the rebase.  This switch is a slightly safer version of `--force` where it will only let you continue if you are not overwriting the work of a different developer on the same branch.  This can prevent you from accidentally deleting someone else's work.
+After the rebase when you go to push back to the remote (step 8) you may need to use `--force-with-lease` switch.  This is needed if any of the git history is re-written during the rebase.  This switch is a slightly safer version of `--force` where it will only let you continue if you are not overwriting the work of a different developer on the same branch.  This prevents you from accidentally deleting someone else's work.
 ```
 
 And these steps in code:
@@ -159,6 +159,10 @@ What does this workflow achieve?
     - This makes it easier to find when a particular change happened and any context that was left in commit messages
 - Once given the OK by the reviewer the code writer makes the final decision on when to merge
 - Any merged branch can be safely deleted, there is no need to clutter up the remote with old branches (also you are less likely to have multiple developers pick the same branch name for their work if there are fewer branches on the remote repo).
+
+```{note}
+With this workflow, every developer is working on **different** branches.  If multiple people are working on a single feature they should create a branch for the feature, and **each** branch off of that new feature branch.  They can both make PRs into/rebase onto the feature branch.  Once the feature is done a new PR that brings it into the `main` branch should be made.  As everyone is on a independent branch merge conflicts only happen at the rebase stages, rather than on pulls or pushes.
+```
 
 ## Writing better commit messages
 
@@ -226,8 +230,8 @@ git switch <name of branch on remote>
 ```
 2. Read the PR to see what changes were made
 3. Test that those changes work as intended
-    - Do the unittest pass locally
-    - Use the code that was changed, if you don't know how ask for an example use case on the PR
+    - Do the unittests pass locally
+    - Use the code that was changed.  If you don't know how, ask for an example use case on the PR
 4. If the PR is fixing a bug:
     - Reproduce the bug on `main`
     - Switch to the PRs branch and ensure the bug is fixed
@@ -241,7 +245,7 @@ git switch <name of branch on remote>
     - If appropriate list any consequences of the changes (e.g. is there other code that should be changed in a future PR as a result)
     - Any actions the PRs author(s) should take before merging
 7. Either approve or block (pending changes) the PR
-8. If approved you are done, it is the responsibility of the author(s) to merge the PR.  If not re-review when the changes you asked for are finished.
+8. If approved you are done, it is the responsibility of the author(s) to merge the PR.  If not, re-review when the changes you asked for are finished.
 
 Here is an example of well constructed PR and review taken from one of the Zooniverse's repositories [https://github.com/zooniverse/front-end-monorepo/pull/2313](https://github.com/zooniverse/front-end-monorepo/pull/2313).
 
@@ -261,14 +265,6 @@ This repository has several GHA set up that fall under CI:
 - Check if any dependencies in `main` have new versions and open a PR that updates them if they do
 
 GitHub can also be configured with branch protection that will ensure that particular GHAs must complete successfully before any code can be merged into it.
-
-### tox
-
-While GHA are great they only run tests in the cloud, so the turn around time can be slow when you want to test a change across different python versions.  [Tox](https://tox.wiki/en/latest/) is a way to automatically setup and run your tests across different python environments (each with different python versions) all on your local computer.
-
-```{note}
-Tox can be used in combination with GHA.  In these cases the GHA is set up to run the `tox` command rather than install you local python package directly and run the tests.
-```
 
 ## CD (continuous delivery/deployment)
 
