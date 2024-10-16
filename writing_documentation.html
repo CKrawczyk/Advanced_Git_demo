@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documenting Python code &mdash; Data Transforms 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="data_transforms" href="modules.html" />
+    <link rel="prev" title="Using GitHub with collaborators" href="github_with_collaborators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Data Transforms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Workshop Notes:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="good_coding_practices.html">Good coding practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_with_collaborators.html">Using GitHub with collaborators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documenting Python code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation-with-apidoc">API documentation with <code class="docutils literal notranslate"><span class="pre">apidoc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-docs">Building the docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-driven-development">Tutorial Driven Development</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">data_transforms</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Data Transforms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documenting Python code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/writing_documentation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documenting-python-code">
+<h1>Documenting Python code<a class="headerlink" href="#documenting-python-code" title="Permalink to this heading"></a></h1>
+<p>When someone new is using your code for hte first time they will likely want to read your documentation to see how the code works.  It is good practice for your documentation to start with a brief description of what your package does (1-2 paragraphs) and clear instructions for how to install the code.</p>
+<p>To help ensure that the source code and the documentation don’t get out of sync, the documentation for each function should be included as a docstring on the function in the source code.  In python this is done with a “triple quote string”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_two_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Return the sum of the two inputs&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Or a more explicit docstring (using <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#style-guide">numpy’s documentation style guide</a>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_two_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Return the sum of the two inputs</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a : float</span>
+<span class="sd">        The first value in the sum</span>
+<span class="sd">    b : float</span>
+<span class="sd">        The second value in the sum</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The sum of `a` and `b`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>In addition to the API documentation from the docstrings you should also provide tutorials on how to use your code.  Python notebooks work great for this kind of documentation.  You can also provide additional information in markdown files (like these notes you are reading now).</p>
+<section id="sphinx">
+<h2>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this heading"></a></h2>
+<p>Once you have written your docs you need a way to collect all of it into a single place, typically a web site.  The most common way to do this in python is to use the <a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">Sphinx</a> package.  The setup for Sphinx can be a bit involved, but once set up it “just works.”</p>
+<section id="config">
+<h3>Config<a class="headerlink" href="#config" title="Permalink to this heading"></a></h3>
+<p>Sphinx has already been set up on this project, but while I was doing it I took notes about every step.  To setup Sphinx on this project I used the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install sphinx and a few add-ons into the env</span>
+pip<span class="w"> </span>install<span class="w"> </span>sphinx,<span class="w"> </span>myst-nb,<span class="w"> </span>sphinx_rtd_theme
+
+<span class="c1"># navigate into the repository</span>
+<span class="nb">cd</span><span class="w"> </span>DISCnet_workshop
+<span class="c1"># make a new folder to hold the documentation</span>
+mkdir<span class="w"> </span>docs
+<span class="nb">cd</span><span class="w"> </span>docs
+<span class="c1"># set up sphinx</span>
+sphinx-quickstart
+</pre></div>
+</div>
+<p>I used the following quickstart options:</p>
+<ul class="simple">
+<li><p>Separate source and build directories (y/n) [n]: y</p></li>
+<li><p>Project name: Data Transforms</p></li>
+<li><p>Author name(s): Coleman Krawczyk</p></li>
+<li><p>Project release []: 0.1.0</p></li>
+<li><p>Project language [en]: en</p></li>
+</ul>
+<p>The final part the setup is adjusting the <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code> file to:</p>
+<ol class="arabic simple">
+<li><p>tell it where our source package lives:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Tell Sphinx what extensions to use:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>  <span class="c1"># auto find doc strings in source code</span>
+    <span class="s1">&#39;sphinx.ext.napoleon&#39;</span><span class="p">,</span>  <span class="c1"># numpy style docstrings</span>
+    <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>  <span class="c1"># Read the Docs theme</span>
+    <span class="s1">&#39;myst_nb&#39;</span>  <span class="c1"># markdown and notebook support</span>
+<span class="p">]</span>
+
+<span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;.rst&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="s1">&#39;myst-nb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.ipynb&#39;</span><span class="p">:</span> <span class="s1">&#39;myst-nb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.myst&#39;</span><span class="p">:</span> <span class="s1">&#39;myst-nb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.txt&#39;</span><span class="p">:</span> <span class="s1">&#39;myst-nb&#39;</span>
+<span class="p">}</span>
+
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;_build&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Thumbs.db&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.DS_Store&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>And change the theme:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="api-documentation-with-apidoc">
+<h3>API documentation with <code class="docutils literal notranslate"><span class="pre">apidoc</span></code><a class="headerlink" href="#api-documentation-with-apidoc" title="Permalink to this heading"></a></h3>
+<p>For Sphinx to be able to read the docstrings from your source code it first needs be told what source files to look in.  This can either be done by adding your source folders by hand to <code class="docutils literal notranslate"><span class="pre">docs/soruce/index.rst</span></code> or by using the <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span></code> command to build these <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files for you.  We will be using this automated approach for this workshop:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc<span class="w"> </span>-MEf<span class="w"> </span>-o<span class="w"> </span>./docs/source<span class="w"> </span>./data_transforms<span class="w"> </span>./data_transforms/tests
+</pre></div>
+</div>
+<p>What is this command doing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-M</span></code>: put module documentation before submodule documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-E</span></code>: don’t create headings for the modules or packages (e.g. when the docstrings already contain them)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code>: overwrite existing files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">./docs/source</span></code>: the output directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./data_transforms</span></code>: the package directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./data_transforms/tests</span></code>: directories to exclude</p></li>
+</ul>
+<p>This command will create two files: <code class="docutils literal notranslate"><span class="pre">data_transforms.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code>. While I think the templates used for these files are not the best in the world, they can provide a good starting place for learning what these files should look like.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are also options for customizing these templates, but that is outside the scope of this workshop.</p>
+</div>
+<p>As we will be running this command every time the docs are built (to check for new code files) the resulting <code class="docutils literal notranslate"><span class="pre">rst</span></code> files have been added to the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file.</p>
+<p>Lastly we need to update the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file to include the files create with this command (and these class notes while we are at it):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">DISCnet Workshop: Writing Code as a Team</span>
+<span class="gh">=========================================</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+   <span class="nc">:caption:</span> Setting the Stage
+
+   introduction
+   schedule
+   the_task
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+   <span class="nc">:caption:</span> Workshop Notes:
+
+   getting_started
+   good_coding_practices
+   github_with_collaborators
+   code_structure
+   packaging_python_code
+   writing_documentation
+   test_driven_development
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+   <span class="nc">:caption:</span> API Documentation:
+   
+   modules
+
+
+<span class="gh">Indices and tables</span>
+<span class="gh">==================</span>
+
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`genindex`</span>
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`modindex`</span>
+</pre></div>
+</div>
+</section>
+<section id="building-the-docs">
+<h3>Building the docs<a class="headerlink" href="#building-the-docs" title="Permalink to this heading"></a></h3>
+<p>With the <code class="docutils literal notranslate"><span class="pre">rst</span></code> files inplace, we can build the docs with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>This will create the static HTML files in the <code class="docutils literal notranslate"><span class="pre">docs/build/html</span></code> folder.  You can open <code class="docutils literal notranslate"><span class="pre">docs/build/html/index.html</span></code> in your favorite browser and see the results.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes the side bar content will not update correctly when new pages are added, to fix this run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> before <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> to remove cached data.</p>
+</div>
+<p>To simplify the auto finding and doc building steps I have created a <code class="docutils literal notranslate"><span class="pre">build_docs.sh</span></code> script in the base repository to run all the commands above in order:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+sphinx-apidoc<span class="w"> </span>-MEf<span class="w"> </span>-o<span class="w"> </span>./source<span class="w"> </span>../data_transforms<span class="w"> </span>../data_transforms/tests
+make<span class="w"> </span>clean
+make<span class="w"> </span>html
+<span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tutorial-driven-development">
+<h2>Tutorial Driven Development<a class="headerlink" href="#tutorial-driven-development" title="Permalink to this heading"></a></h2>
+<p>It is quite common in fast moving projects for the documentation and tutorials to become out of date with the code.  To try and combat this it can be helpful to adapt to a tutorial driven workflow.  In this kind of workflow you sit down and write the full tutorial <strong>first</strong> and only once it is finished do you updated the code to match the new tutorial.  This ensure that the tutorial always matches the current code and helps you keep in mind how the code is intended to be used.</p>
+<p>This method works best when you can involve some of the people who will be using your code in the process of making the tutorials.  You can get rapid feedback about the user experience and use that to better inform you about the best way to structure the code.  These tutorials can also inform you of various test cases you can create for your code and works well with test driven development as well (more on this in the next section).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="github_with_collaborators.html" class="btn btn-neutral float-left" title="Using GitHub with collaborators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="data_transforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Coleman Krawczyk.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
