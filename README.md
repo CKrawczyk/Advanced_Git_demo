@@ -1,7 +1,7 @@
-# DISCnet_workshop
-DISCnet workshop repository
+# Advanced Git Demo
+Advanced Git Demo repository
 
-The full workshop notes are hosted on this repositories GitHub Pages URL: https://ckrawczyk.github.io/Advanced_Git_demo/
+The demo's notes are hosted on this repositories GitHub Pages URL: https://ckrawczyk.github.io/Advanced_Git_demo/
 
 You can also find them in the `docs/source` directory:
 
