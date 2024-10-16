@@ -7,3 +7,4 @@ You can also find them in the `docs/source` directory:
 
 - [Good Coding Practices](./docs/source/good_coding_practices.md)
 - [GitHub with Collaborators](./docs/source/GitHub_with_collaborators.md)
+- [Writing Documentation](./docs/source/writing_documentation.md)
