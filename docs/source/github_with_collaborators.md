@@ -262,7 +262,6 @@ This repository has several GHA set up that fall under CI:
 
 - Check coding style with `flake8` on any PR
 - Run unit test and report coverage on any PR
-- Check if any dependencies in `main` have new versions and open a PR that updates them if they do
 
 GitHub can also be configured with branch protection that will ensure that particular GHAs must complete successfully before any code can be merged into it.
 
